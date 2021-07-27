@@ -1,1 +1,7 @@
-coverage
+build/*.js
+src/assets
+src/router/mockRouterData.js
+public
+dist
+public/locales/*.js
+app/public/locales/*.js

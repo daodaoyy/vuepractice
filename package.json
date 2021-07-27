@@ -8,16 +8,23 @@
   },
   "dependencies": {
     "egg": "^2.15.1",
-    "egg-scripts": "^2.11.0"
+    "egg-scripts": "^2.11.0",
+    "vue": "^2.6.14"
   },
   "devDependencies": {
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
+    "babel-loader": "^8.2.2",
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",
     "eslint": "^5.13.0",
     "eslint-config-egg": "^7.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.14",
     "webpack": "^5.46.0",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
@@ -26,9 +33,12 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-vuepractice",
-    "stop": "egg-scripts stop --title=egg-server-vuepractice",
-    "dev": "egg-bin dev",
+    "dev": "npx egg-bin dev | npx webpack --mode development --watch",
+    "dev:client": "npx webpack --mode development --watch",
+    "dev:server": "npx egg-bin dev",
+    "build": "npx webpack --mode production",
+    "start": "npx eggctl start --port 8080 --daemon --title=egg-server-vuepractice",
+    "stop": "npx eggctl stop --title=egg-server-vuepractice",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
