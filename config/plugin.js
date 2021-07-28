@@ -1,9 +1,15 @@
-'use strict';
+exports.nunjucks = {
+  enable: true,
+  package: 'egg-view-nunjucks'
+};
 
-/** @type Egg.EggPlugin */
-module.exports = {
-  // had enabled by egg
-  // static: {
-  //   enable: true,
-  // }
+exports.cors = {
+  enable: true,
+  package: 'egg-cors'
+};
+
+//开启数据库插件
+exports.mysql = {
+  enable: true,
+  package: 'egg-mysql',
 };

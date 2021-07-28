@@ -5,16 +5,19 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //单独提取c
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); //警告
 // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"); //优化压缩CSS资源
 
-
 module.exports = {
-  mode: 'development',
-  entry: './client/admin/main.js',
+  //配置入口
+  entry: {
+   index: './client/admin/main.js',
+  },
+  //配置打包出口文件
   output: {
-    filename: 'bundle.[name].[contenthash].js',
     path: path.join(__dirname, './app/public'),
     publicPath: '/',
+    filename: 'bundle.[name].[contenthash].js',
     chunkFilename: '[id].[chunkhash:8].chunk.js'
   },
+  //配置模块规则
   module: {
     rules: [
       // {//eslint规则
@@ -80,23 +83,20 @@ module.exports = {
       },
     ]
   },
-
-  // 添加插件
+  //添加插件
   plugins: [
     new VueLoaderPlugin(),
-    // new HtmlWebpackPlugin({
-    //   chunks: ['index'],
-    //   filename: 'index.html',
-    //   template: './index.html'
-    // }),
+    new HtmlWebpackPlugin({
+      chunks: ['index'],
+      filename: 'index.html',
+      template: './client/admin/index.html'
+    }),
 
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash:8].css',
       chunkFilename: '[id].[contenthash:8].chunk.css'
     })
-
   ],
-
   //优化
   // optimization: {
   //   minimizer: [
@@ -105,17 +105,16 @@ module.exports = {
   //   ],
   // },
 
-  node: {
-    // net: 'empty',
-  },
-
+  // node: {
+  //   net: 'empty',
+  // },
   //配置别名
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       joi: 'joi-browser',
       vue$: 'vue/dist/vue.esm.js',
-      '@client': path.resolve(__dirname, './client')
+      '@': path.resolve(__dirname, './client')
     }
   }
 };

@@ -1,15 +1,15 @@
 import Vue from 'vue';
 
-// import router from '@src/router';
+import router from '@/admin/router';
 import App from './App.vue';
 // import axios from 'axios';
 
 //引入axios建立请求
-Vue.prototype.axios = axios;
+// Vue.prototype.axios = axios;
 
 // Vue.use(iView)
 new Vue({
   el: '#app',
-  // router,
+  router,
   render: h => h(App)
 });
