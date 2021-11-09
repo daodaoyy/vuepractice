@@ -1,54 +1,16 @@
 <template>
   <div class="home">
-    <button @click="clickClosure">tm的闭包</button>
+    <button class="closure-box" @click="clickClosure">tm的闭包</button>
+    <button class="this-box" @click="thisFunction">this练习</button>
+    <button class="eventloop-box" @click="eventLoopFuc">eventLoop练习</button>
+    <button class="debounce-box" @click="clickDebounce">防抖debounce练习{{ num }}</button>
+    <button class="throlle-box" @click="clickThrolle">节流throttle练习{{ num }}</button>
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-
-      }
-    },
-    methods: {
-      clickClosure() {
-        // 5->5,5,5,5,5
-        // for (var i = 0; i < 5; i++) {
-        //   setTimeout(function() {
-        //     console.log(new Date, i);
-        //   }, 1000);
-        // }
-        // console.log(new Date, i);
-
-        // 5->0,1,2,3,4
-        // for (var i = 0; i < 5; i++) {
-        //   (function(j) {
-        //     setTimeout(function() {
-        //       console.log(new Date(), j)
-        //     }, 1000)
-        //   })(i)
-        // }
-        // console.log(new Date, i);
-
-        // 5->0,1,2,3,4
-        // for (var i = 0; i < 5; i++) {   
-        //   setTimeout(function(j) {
-        //     console.log(new Date(), j)
-        //   }, 1000, i)
-        //   }
-        // console.log(new Date, i);
-
-        // 报错->0,1,2,3,4
-        for (let i = 0; i < 5; i++) {
-          setTimeout(function() {
-            console.log(new Date(), i)
-          }, 1000)
-        }
-        // console.log(new Date, i);
-      }
-    }
-  };
+import index from './index'
+export default index;
 </script>
 
 <style lang="less" scoped>
