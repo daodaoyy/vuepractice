@@ -123,7 +123,6 @@ export default {
       this.throttled(this.count, 2000)()
     },
     throttled(fn, delay) {
-      // let timer = null
       let starttime = Date.now()
       return function () {
         let curTime = Date.now() // 当前时间

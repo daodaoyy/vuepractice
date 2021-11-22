@@ -69,7 +69,11 @@ module.exports = {
 
       {//文件加载器
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-        loader: 'file-loader'
+        loader: 'file-loader',
+        options: {
+          limit: 1024,
+          esModule: false
+        }
       },
 
       {//用于将文件转换为base64url
